@@ -96,10 +96,10 @@ public class Card {
 
     protected LocalDate calculateNextReviewDate(LocalDate currentDueDate) {
         if (correctStreak == 0) {
-            return currentDueDate.plusDays((1));
+            return LocalDate.now().plusDays((1));
         } else {
             double daysToAdd = 6 * Math.pow(easiness, correctStreak - 1);
-            return currentDueDate.plusDays(round(daysToAdd));
+            return LocalDate.now().plusDays(round(daysToAdd));
         }
     }
 

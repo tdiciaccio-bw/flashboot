@@ -21,19 +21,15 @@ public class LessonRestController {
         this.cardDAO = cardDAO;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping()
     public ResponseEntity<ArrayList<Card>> getLesson(@RequestParam(name = "size", required = false) Integer size,
                                                      @RequestParam(name = "deck", required = true) Long deck) {
-        System.out.println("Received Get Request");
         ArrayList<Card> lesson = cardDAO.getLesson(deck, size);
         return ResponseEntity.status(HttpStatus.OK).body(lesson);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void completeLesson(@RequestBody ArrayList<ScoreResponse> scoredCards) {
-        System.out.println("Updated lesson");
         cardDAO.updateLesson(scoredCards);
     }
 }

@@ -21,14 +21,12 @@ public class DeckRestController {
         this.deckDAO = deckDAO;
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping()
     public ResponseEntity<ArrayList<Deck>> getDecksByUserId(Principal principal) {
         ArrayList<Deck> decks = deckDAO.getAllByUserEmail(principal.getName());
         return ResponseEntity.status(HttpStatus.OK).body(decks);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Deck> addDeck(@RequestBody Deck deck, Principal principal) {
         Deck createdDeck = deckDAO.addDeck(deck, principal.getName());

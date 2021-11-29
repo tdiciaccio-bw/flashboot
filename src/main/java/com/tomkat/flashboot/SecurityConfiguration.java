@@ -13,5 +13,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().anyRequest().authenticated()
                 .and().oauth2ResourceServer().jwt();
         Okta.configureResourceServer401ResponseBody(http);
+        http.cors();
     }
 }
