@@ -51,7 +51,7 @@ public class CardTests {
         card.setNextDueDate(LocalDate.parse("2021-09-11"));
         card.setEasiness(1);
         LocalDate nextDate = card.calculateNextReviewDate(card.getNextDueDate());
-        LocalDate date = LocalDate.parse("2021-09-12");
+        LocalDate date = LocalDate.now().plusDays(1);
         Assert.assertEquals(nextDate, date);
     }
 
@@ -62,7 +62,7 @@ public class CardTests {
         card.setEasiness(1);
         card.setCorrectStreak(1);
         LocalDate nextDate = card.calculateNextReviewDate(card.getNextDueDate());
-        LocalDate date = LocalDate.parse("2021-09-17");
+        LocalDate date = LocalDate.now().plusDays(6);
         Assert.assertEquals(nextDate, date);
     }
 
@@ -74,7 +74,7 @@ public class CardTests {
         card.setEasiness(5);
         card.setCorrectStreak(2);
         LocalDate nextDate = card.calculateNextReviewDate(card.getNextDueDate());
-        LocalDate date = LocalDate.parse("2021-09-26");
+        LocalDate date = LocalDate.now().plusDays(15);
         Assert.assertEquals(nextDate, date);
     }
 
@@ -91,7 +91,7 @@ public class CardTests {
         Card card = new Card();
         card.setNextDueDate(LocalDate.parse("2021-10-01"));
         card.updateCard(0);
-        Assert.assertEquals(card.getNextDueDate(), LocalDate.parse("2021-10-02"));
+        Assert.assertEquals(card.getNextDueDate(), LocalDate.now().plusDays(1));
     }
 
     @Test

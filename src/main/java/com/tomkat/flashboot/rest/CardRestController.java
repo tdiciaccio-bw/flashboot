@@ -42,7 +42,6 @@ public class CardRestController {
         cardDAO.updateCard(scoreResponse.getCard().getId(), scoreResponse.getScore());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping(
             consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ArrayList<Card>> insertCards(@RequestBody BulkInsertPayload payload) {
