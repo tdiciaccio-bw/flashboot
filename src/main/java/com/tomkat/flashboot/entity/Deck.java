@@ -20,6 +20,7 @@ public class Deck {
     private User user;
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "deck")
     private List<Card> cards;
 
@@ -64,6 +65,10 @@ public class Deck {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public Integer getNumberOfCards() {
+        return cards.size();
     }
 
     @Override
