@@ -50,9 +50,7 @@ public class CardDAOHibernateImpl implements CardDAO {
     @Transactional
     public Card insertCard(Card card) {
         Session session = entityManager.unwrap(Session.class);
-        System.out.println("Card id: " + card.getId());
         session.saveOrUpdate(card);
-        System.out.println("Card id: " + card.getId());
         return card;
     }
 

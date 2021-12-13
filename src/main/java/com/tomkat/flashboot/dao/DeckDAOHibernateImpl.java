@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 public class DeckDAOHibernateImpl implements DeckDAO{
@@ -21,14 +20,6 @@ public class DeckDAOHibernateImpl implements DeckDAO{
     public DeckDAOHibernateImpl(EntityManager entityManager, UserDAO userDAO) {
         this.entityManager = entityManager;
         this.userDAO = userDAO;
-    }
-
-    @Override
-    @Transactional
-    public ArrayList<Deck> getAllByUserId(Long userId) {
-        Session session = entityManager.unwrap(Session.class);
-        Query<Deck> query = session.createQuery("from Deck where userId = :userId" , Deck.class);
-        return (ArrayList<Deck>) query.getResultList();
     }
 
     @Override
